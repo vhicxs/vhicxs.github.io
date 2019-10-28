@@ -1,0 +1,74 @@
+{
+  "data": {
+    "consignee_detail": {
+      "country": "Indonesia",
+      "description": "description",
+      "detail_location": "-",
+      "district": "kecamatan",
+      "id": 416,
+      "latlng": "-6.778916,105.3833808",
+      "map_address": "-",
+      "name": "TESTER",
+      "phone": "84884",
+      "postal_code": "-",
+      "province": "BANTEN",
+      "regency": "KABUPATEN PANDEGLANG",
+      "rt": "35",
+      "rw": "23",
+      "village": "Neglasari"
+    },
+    "consignee_id": 416,
+    "drop_points_id": 1,
+    "etc_fee": "Rp0",
+    "id": 313,
+    "insurance_fee": "0",
+    "items_detail": {
+      "information": "vsgs",
+      "item_types_id": "1",
+      "item_types_name": "General Cargo",
+      "name": "faas",
+      "quantity": "1",
+      "volume_weight": "1",
+      "weight": "1"
+    },
+    "items_id": 416,
+    "package_types_detail": {
+      "fee": "0",
+      "name": "Pcs"
+    },
+    "package_types_id": "1",
+    "receipt_number": "191004MDNMDN00001BLB",
+    "shipment_cost": "Rp4500",
+    "shipper_detail": {
+      "country": "Indonesia",
+      "description": "description",
+      "detail_location": "-",
+      "district": "kecamatan",
+      "fcm_token": "fyShjXsI9VQ:APA91bGX2eMPYD3bMSQavLi3VfXeD2QIl6D8YPIXhfjgOfbHOngwZM42MrWHy63DxgDfM5XL30rfdGCD7e5-WThsyqmw4BqCG73coFzH_Ry6wYG8e7yD3ProqnDZKSZMP3RyxH3LKTvB",
+      "id": 519,
+      "latlng": "-6.778916,105.3833808",
+      "map_address": "-",
+      "name": "gsggd",
+      "phone": "84884",
+      "postal_code": "-",
+      "province": "BANTEN",
+      "regency": "KABUPATEN PANDEGLANG",
+      "rt": "01",
+      "rw": "32",
+      "transaction_id": null,
+      "user_key": "1JTJ3V26sKctaNtdC1zVFFOkBKq2",
+      "village": "Neglasari"
+    },
+    "shipper_id": 519,
+    "status_detail": {
+      "name": "Requesting"
+    },
+    "status_id": "1",
+    "subcharge_fee": "Rp0",
+    "tax_fee": "Rp4.5",
+    "timestamp": "2019-10-16 12:02:19",
+    "total_cost": "Rp4504.5"
+  },
+  "message": "",
+  "status": true
+}
