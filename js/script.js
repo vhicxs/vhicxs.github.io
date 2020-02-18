@@ -1,93 +1,61 @@
+const tanah = document.querySelectorAll('.tanah');
+const tikus = document.querySelectorAll('.tikus');
+const papanSkor = document.querySelector('.papan-skor');
+const pop = document.querySelector('#pop');
+const yeey = document.querySelector('#yeey');
 
-function searchMovie() {
-    $('#movie-list').html('');
+let tanahSebelumnya;
+let selesai;
+let skor;
 
-    $.ajax({
-        url: 'http://omdbapi.com',
-        type: 'get',
-        dataType: 'json',
-        data: {
-            'apikey': 'dca61bcc',
-            's': $('#search-input').val()
-        },
-        success: function (result) {
-            if (result.Response == "True") {
-                let movies = result.Search;
-
-                $.each(movies, function (i, data) {
-                    $('#movie-list').append(`
-                        <div class="col-md-4">
-                            <div class="card mb-3">
-                                <img src="${data.Poster}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title">${data.Title}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">${data.Year}</h6>
-                                <a href="#" class="card-link see-detail" data-toggle="modal" data-target="#exampleModal" data-id="${data.imdbID}">See Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    `);
-                });
-
-                $('#search-input').val('');
-
-            } else {
-                $('#movie-list').html(`
-                    <div class="col">
-                        <h1 class="text-center">` + result.Error + `</h1>
-                    </div>
-                `)
-            }
-        }
-    });
+function randomTanah(tanah) {
+  const t = Math.floor(Math.random() * tanah.length);
+  const tRandom = tanah[t];
+  if (tRandom == tanahSebelumnya) {
+    randomTanah(tanah);
+  }
+  tanahSebelumnya = tRandom;
+  return tRandom;
 }
 
-$('#search-button').on('click', function () {
-    searchMovie();
-});
+function randomWaktu(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
 
-$('#search-input').on('keyup', function (e) {
-    if (e.which === 13) {
-        searchMovie();
+function munculkanTikus() {
+  const tRandom = randomTanah(tanah);
+  const wRandom = randomWaktu(300, 1000);
+  tRandom.classList.add('muncul');
+
+  setTimeout(() => {
+    tRandom.classList.remove('muncul');
+    if (!selesai) {
+      munculkanTikus();
     }
-});
+  }, wRandom);
+}
 
+function mulai() {
+  selesai = false;
+  skor = 0;
+  papanSkor.textContent = 0;
+  munculkanTikus();
+  setTimeout(() => {
+    selesai = true;
+	confirm("GAME OVER");
+	confirm("KLIK START UNTUK MEMULAI GAME KEMBALI");
+	yeey.play();
+  }, 10000);
+  
+}
 
-$('#movie-list').on('click', '.see-detail', function () {
+function pukul() {
+  skor++;
+  this.parentNode.classList.remove('muncul');
+  pop.play();
+  papanSkor.textContent = skor;
+}
 
-    $.ajax({
-        url: 'http://omdbapi.com',
-        dataType: 'json',
-        type: 'get',
-        data: {
-            'apikey': 'dca61bcc',
-            'i': $(this).data('id')
-        },
-        success: function (movie) {
-            if (movie.Response === "True") {
-
-                $('.modal-body').html(`
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="`+ movie.Poster + `" class="img-fluid">
-                            </div>
-
-                            <div class="col-md-8">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><h3>`+ movie.Title + `</h3></li>
-                                    <li class="list-group-item">Released : `+ movie.Released + `</li>
-                                    <li class="list-group-item">Genre : `+ movie.Genre + `</li>                 
-                                    <li class="list-group-item">Director : `+ movie.Director + `</li>                 
-                                    <li class="list-group-item">Director : `+ movie.Actors + `</li>                 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                `);
-
-            }
-        }
-    });
-
+tikus.forEach(t => {
+  t.addEventListener('click', pukul);
 });
