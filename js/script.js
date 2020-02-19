@@ -45,7 +45,7 @@ function mulai() {
 	confirm("GAME OVER");
 	confirm("KLIK START UNTUK MEMULAI GAME KEMBALI");
 	yeey.play();
-  }, 10000);
+  }, 50000);
   
 }
 
